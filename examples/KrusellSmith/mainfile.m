@@ -38,15 +38,15 @@ tstart = tic;
 %% Setup the toolbox
 % Just need to include folders containing the files in the path.
 
-addpath('/home/sehyoun/Dropbox/0Packages/AutoDiff');
-addpath('/home/sehyoun/Dropbox/0Packages/PHACT');
+%addpath('/home/sehyoun/Dropbox/0Packages/AutoDiff');
+%addpath('/home/sehyoun/Dropbox/0Packages/PHACT');
 
 %% Set options for this example run
 % example_case : 0   run full case
 %                1   run full and compare with only value function reduction
 %                2   run full and compare with only state space reduction
 %                3   run full and compare with both reductions
-example_case = 3;
+example_case = 1;
 reduceDist_hor = 5;        % m of K_m(A,b)
 
 % initialize shocks for simulation
