@@ -39,8 +39,8 @@
 %addpath('/path/to/PHACT');
 %addpath('/path/to/AutoDiff');
 
-addpath('/home/sehyoun/Dropbox/1Packages/PHACT');
-addpath('/home/sehyoun/Dropbox/1Packages/AutoDiff');
+%addpath('/home/sehyoun/Dropbox/1Packages/PHACT');
+%addpath('/home/sehyoun/Dropbox/1Packages/AutoDiff');
 
 % Turn off the warning message from auto diff
 % You should read the warning once, but turn it off after reading it.
@@ -50,7 +50,7 @@ warning('off','AutoDiff:maxmin')
 % Set options for this example run
 ReduceDistribution = 1;  % 1 for state space reduction 0 for not
 reduceV = 1;             % 1 for value function reduction 0 for not
-ReduceDist_hor = 20;     % Dimensionality of the Krylov subspace
+ReduceDist_hor = [25,30,35,40];     % Dimensionality of the Krylov subspace
 DisplayLev = 1;          % Determines verbosity of steady state calculation
 check_consistency = 1;   % Runs Step 6: Internal consistency check
 
@@ -202,6 +202,7 @@ wage = simulated(3,:)'/vars_SS(n_v+n_g+1);
 % A different internal consistency check will be implemented and updated in the
 %    future. This function should only be taken as a sanity check.
 
+%{
 if check_consistency
     g1 = -derivs(:,1:nVars);
     psi = -derivs(:,2*nVars+nEErrors+1:2*nVars+nEErrors+n_shocks);
@@ -209,7 +210,7 @@ if check_consistency
     to_red = to_spline * state_red;
     [epsilon] = internal_consistency_check(G1,impact,n_g_red,from_red,to_red,g1,psi,F,n_v,n_g,1000,vars_SS,1,0.07);
 end
-
+%}
 %% (optional) Step 7: Plot relevant IRFs
 line_style = '-';
 color = 'blue';
@@ -276,3 +277,8 @@ ylabel('$\%$ deviation','interpreter','latex');
 xlim([1 T]);
 grid on;
 hold off;
+
+fig = figure('units','normalized','outerposition',[0 0 1 1]);
+line_style = '-';
+color = 'blue';
+plot_IRFs;
