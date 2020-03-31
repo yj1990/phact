@@ -43,8 +43,8 @@
 %% Setup the toolbox
 % Just need to include folders containing the files in the path.
 
-addpath('/home/sehyoun/Dropbox/0Packages/AutoDiff');
-addpath('/home/sehyoun/Dropbox/0Packages/PHACT');
+addpath('/Users/yangjuehan/Documents/GitHub/phact');
+addpath('/Users/yangjuehan/Documents/GitHub/MATLABAutoDiff');
 
 %% Set options for this example run
 % example_case : 1   run full and compare with only value function reduction
